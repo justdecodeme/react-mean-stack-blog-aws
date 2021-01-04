@@ -3,45 +3,56 @@ import bodyParser from "body-parser";
 import { MongoClient } from "mongodb";
 import path from "path";
 
-const articlesInfo = {
-	"learn-react": {
+// Construct a document
+let blogs = [
+	{ name: "learn-react", upvotes: 0, comments: [] },
+	{
+		name: "learn-node",
 		upvotes: 0,
 		comments: [],
 	},
-	"learn-node": {
+	{
+		name: "my-thoughts-on-resumes",
 		upvotes: 0,
 		comments: [],
 	},
-	"my-thoughts-on-resumes": {
-		upvotes: 0,
-		comments: [],
-	},
-};
+];
 
 const app = express();
+// const uri = "mongodb://localhost:27017";
+const uri =
+	"mongodb+srv://react-full-stack-website-aws_user:react-full-stack-website-aws_user@react-full-stack-websit.0ostt.mongodb.net/my-blog?retryWrites=true&w=majority";
+const Port = process.env.Port || 8000;
 
 app.use(express.static(path.join(__dirname, "/build")));
 app.use(bodyParser.json());
 
 const withDB = async (operations, res) => {
 	try {
-		const client = await MongoClient.connect("mongodb://localhost:27017", {
+		const client = await MongoClient.connect(uri, {
 			useNewUrlParser: true,
 		});
 		const db = client.db("my-blog");
 
-		await operations(db);
-		// const articleInfo = await db
-		// 	.collection("articles")
-		// 	.findOne({ name: articleName });
+		// // Use the collection "people"
+		// const col = db.collection("articles");
 
-		// res.status(200).json(articleInfo);
+		// const p = await col.insertMany(blogs);
+		// console.log(p);
+
+		console.log("...................");
+		console.log("Database Connected");
+		console.log("...................");
+
+		await operations(db);
 
 		client.close();
 	} catch (error) {
 		res.status(500).json({ message: "Error connecting to db", error });
 	}
 };
+
+withDB(() => {}, null);
 
 // app.get("/hello", (req, res) => res.send("Hello!"));
 // app.get("/hello/:name", (req, res) => res.send(`Hello ${req.params.name}`));
@@ -114,4 +125,4 @@ app.get("*", (req, res) => {
 	res.sendFile(path.join(__dirname + "/build/index.html"));
 });
 
-app.listen(8000, () => console.log("Listening on port 8000")); // http://localhost:8000/hello
+app.listen(Port, () => console.log("Listening on Port " + Port)); // http://localhost:8000/hello
