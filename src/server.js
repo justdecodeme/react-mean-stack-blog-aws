@@ -25,8 +25,8 @@ const app = express();
 // const uri = process.env.DB;
 const uri =
 	"mongodb+srv://react-full-stack-website-aws_user:react-full-stack-website-aws_user@react-full-stack-websit.0ostt.mongodb.net/my-blog?retryWrites=true&w=majority";
-// const Port = process.env.PORT || 8000;
-const Port = 8000;
+const Port = process.env.PORT || 8000;
+// const Port = 8000;
 
 app.use(express.static(path.join(__dirname, "/build")));
 app.use(bodyParser.json());
