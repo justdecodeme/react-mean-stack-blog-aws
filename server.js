@@ -1,8 +1,12 @@
-import express from "express";
-import bodyParser from "body-parser";
-import { MongoClient } from "mongodb";
+// import express from "express";
+// import bodyParser from "body-parser";
+// import { MongoClient } from "mongodb";
+// import path from "path";
+const express = require("express");
+const bodyParser = require("body-parser");
+const MongoClient = require("mongodb");
+const path = require("path");
 // const dotenv = require("dotenv");
-import path from "path";
 // dotenv.config();
 
 // Construct a document
