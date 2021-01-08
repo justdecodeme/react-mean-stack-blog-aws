@@ -1,1 +1,1 @@
-web: npx babel-node src/server.js
+web:npx babel-node src/server.js
