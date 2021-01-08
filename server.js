@@ -132,7 +132,7 @@ app.post("/api/articles/:name/add-comment", (req, res) => {
 });
 
 app.get("*", (req, res) => {
-	res.sendFile(path.join(__dirname + "src/build/index.html"));
+	res.sendFile(path.join(__dirname + "/src/build/index.html"));
 });
 
 app.listen(Port, () => console.log("Listening on Port " + Port)); // http://localhost:8000/hello
