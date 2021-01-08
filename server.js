@@ -1,11 +1,11 @@
-// import express from "express";
-// import bodyParser from "body-parser";
-// import { MongoClient } from "mongodb";
-// import path from "path";
 const express = require("express");
 const bodyParser = require("body-parser");
 const MongoClient = require("mongodb").MongoClient;
 const path = require("path");
+// import express from "express";
+// import bodyParser from "body-parser";
+// import { MongoClient } from "mongodb";
+// import path from "path";
 
 // Construct a document
 let blogs = [
@@ -30,7 +30,7 @@ const uri =
 const Port = process.env.PORT || 8000;
 // const Port = 8000;
 
-app.use(express.static(path.join(__dirname, "/build")));
+app.use(express.static(path.join(__dirname, "/src/build")));
 app.use(bodyParser.json());
 
 const withDB = async (operations, res) => {
@@ -72,10 +72,6 @@ app.post("/hello", (req, res) => res.send(`Hello ${req.body.name}!`));
 
 // 		res.status(200).json(articlesList);
 // 	}, res);
-// });
-
-// app.get("/", function (req, res) {
-// 	res.send("demo-heroku-rakko2");
 // });
 
 app.get("/api/articles/:name", async (req, res) => {
