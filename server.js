@@ -74,6 +74,10 @@ app.post("/hello", (req, res) => res.send(`Hello ${req.body.name}!`));
 // 	}, res);
 // });
 
+app.get("/", function (req, res) {
+	res.send("demo-heroku-rakko2");
+});
+
 app.get("/api/articles/:name", async (req, res) => {
 	withDB(async (db) => {
 		const articleName = req.params.name;
