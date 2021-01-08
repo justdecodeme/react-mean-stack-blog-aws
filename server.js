@@ -1,11 +1,11 @@
-import express from "express";
-import bodyParser from "body-parser";
-import { MongoClient } from "mongodb";
-import path from "path";
-// const express = require("express");
-// const bodyParser = require("body-parser");
-// const MongoClient = require("mongodb");
-// const path = require("path");
+// import express from "express";
+// import bodyParser from "body-parser";
+// import { MongoClient } from "mongodb";
+// import path from "path";
+const express = require("express");
+const bodyParser = require("body-parser");
+const MongoClient = require("mongodb").MongoClient;
+const path = require("path");
 
 // Construct a document
 let blogs = [
